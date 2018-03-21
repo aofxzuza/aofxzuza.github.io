@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-111812026-2', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+  <title>JavaFX with Geotools Tutorial - Part 1: Load shape file | Aofxzuza</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Prerequisites JDK 8u40 or greater (includes JavaFX 8) A favorite text editor or IDE Maven Geotools FXGraphics2D Shape files from DIVA-GIS, STATSilk etc.  Build with MavenFirst you set up a basic buil">
+<meta name="keywords" content="java,map engine">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaFX with Geotools Tutorial - Part 1: Load shape file">
+<meta property="og:url" content="https://aofxzuza.github.io/2016/02/12/javafx-with-geotools-tutorial-part-1-load-shape-file/index.html">
+<meta property="og:site_name" content="Aofxzuza">
+<meta property="og:description" content="Prerequisites JDK 8u40 or greater (includes JavaFX 8) A favorite text editor or IDE Maven Geotools FXGraphics2D Shape files from DIVA-GIS, STATSilk etc.  Build with MavenFirst you set up a basic buil">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://aofxzuza.github.io/images/geotools_fx/map_tutorial1.jpg">
+<meta property="og:updated_time" content="2018-03-21T07:51:47.433Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaFX with Geotools Tutorial - Part 1: Load shape file">
+<meta name="twitter:description" content="Prerequisites JDK 8u40 or greater (includes JavaFX 8) A favorite text editor or IDE Maven Geotools FXGraphics2D Shape files from DIVA-GIS, STATSilk etc.  Build with MavenFirst you set up a basic buil">
+<meta name="twitter:image" content="https://aofxzuza.github.io/images/geotools_fx/map_tutorial1.jpg">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Aofxzuza</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://aofxzuza.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-javafx-with-geotools-tutorial-part-1-load-shape-file" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/02/12/javafx-with-geotools-tutorial-part-1-load-shape-file/" class="article-date">
+  <time datetime="2016-02-11T20:43:36.000Z" itemprop="datePublished">2016-02-12</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/coding/">coding</a>►<a class="article-category-link" href="/categories/coding/application/">application</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JavaFX with Geotools Tutorial - Part 1: Load shape file
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="/images/geotools_fx/map_tutorial1.jpg" alt="Tutorial 1" title="Tutorial 1"></p>
+<h2 id="Prerequisites"><a href="#Prerequisites" class="headerlink" title="Prerequisites"></a>Prerequisites</h2><ul>
+<li><a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank" rel="noopener">JDK 8u40</a> or greater (includes JavaFX 8)</li>
+<li>A favorite text editor or IDE</li>
+<li><a href="http://maven.apache.org/download.cgi" target="_blank" rel="noopener">Maven</a></li>
+<li><a href="http://www.geotools.org/" target="_blank" rel="noopener">Geotools</a></li>
+<li><a href="https://github.com/jfree/fxgraphics2d" target="_blank" rel="noopener">FXGraphics2D</a></li>
+<li>Shape files from <a href="http://www.diva-gis.org/Data" target="_blank" rel="noopener">DIVA-GIS</a>, <a href="http://www.statsilk.com/maps/download-free-shapefile-maps" target="_blank" rel="noopener">STATSilk</a> etc.</li>
+</ul>
+<h2 id="Build-with-Maven"><a href="#Build-with-Maven" class="headerlink" title="Build with Maven"></a>Build with Maven</h2><p>First you set up a basic build script.</p>
+<h3 id="Create-the-project-structure"><a href="#Create-the-project-structure" class="headerlink" title="Create the project structure"></a>Create the project structure</h3><ol>
+<li>Create directory structure following maven standard</li>
+<li>Download <a href="http://www.diva-gis.org/Data" target="_blank" rel="noopener">global country boundaries shape files</a> and put to resource directory</li>
+<li>Create 2 classes for <code>Main.java</code> and <code>MapCanvas.java</code></li>
+</ol>
+<pre>
+map_example
+└── src
+    └── main
+        └── java
+            └── map_example
+                └── Main.java
+                └── MapCanvas.java
+        └── resource
+            └── map_example
+                └── countries.dbf
+                └── countries.prj
+                └── countries.shp
+                └── countries.shx
+└── pom.xml
+</pre>
+
+<h3 id="Configure-pom-xml"><a href="#Configure-pom-xml" class="headerlink" title="Configure pom.xml"></a>Configure pom.xml</h3><ol>
+<li>Define the version number of libraries as you wish.<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">project.build.sourceEncoding</span>&gt;</span>UTF-8<span class="tag">&lt;/<span class="name">project.build.sourceEncoding</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">geotools.version</span>&gt;</span>15-SNAPSHOT<span class="tag">&lt;/<span class="name">geotools.version</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">fxgraphics2d.version</span>&gt;</span>1.3<span class="tag">&lt;/<span class="name">fxgraphics2d.version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ul>
+<li><p>Geotools</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.geotools<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>gt-shapefile<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;geotools.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.geotools<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>gt-swing<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;geotools.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>FXGraphics2D</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.jfree<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>fxgraphics2d<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;fxgraphics2d.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="Implementation"><a href="#Implementation" class="headerlink" title="Implementation"></a>Implementation</h2><p>Now that you’ve done with setting up the project, next you can create map canvas.</p>
+<h3 id="Create-map-canvas"><a href="#Create-map-canvas" class="headerlink" title="Create map canvas"></a>Create map canvas</h3><ol>
+<li><p>Initial java fx canvas and <code>GraphicsContext</code>. The <code>GraphicsContext</code> will be used to draw map content on the canvas</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> Canvas canvas;</span><br><span class="line"><span class="keyword">private</span> MapContent map;</span><br><span class="line"><span class="keyword">private</span> GraphicsContext gc;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">MapCanvas</span><span class="params">(<span class="keyword">int</span> width, <span class="keyword">int</span> height)</span> </span>&#123;</span><br><span class="line">	canvas = <span class="keyword">new</span> Canvas(width, height);</span><br><span class="line">	gc = canvas.getGraphicsContext2D();</span><br><span class="line">	initMap();</span><br><span class="line">	drawMap(gc);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> Node <span class="title">getCanvas</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> canvas;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Load shape files and setting up style for displaying on the screen.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initMap</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		FileDataStore store = FileDataStoreFinder.getDataStore(<span class="keyword">this</span>.getClass().getResource(<span class="string">"countries.shp"</span>));</span><br><span class="line">		SimpleFeatureSource featureSource = store.getFeatureSource();</span><br><span class="line">		map = <span class="keyword">new</span> MapContent();</span><br><span class="line">		map.setTitle(<span class="string">"Quickstart"</span>);</span><br><span class="line">		Style style = SLD.createSimpleStyle(featureSource.getSchema());</span><br><span class="line">		FeatureLayer layer = <span class="keyword">new</span> FeatureLayer(featureSource, style);</span><br><span class="line">		map.addLayer(layer);</span><br><span class="line">		map.getViewport().setScreenArea(<span class="keyword">new</span> Rectangle((<span class="keyword">int</span>) canvas.getWidth(), (<span class="keyword">int</span>) canvas.getHeight()));</span><br><span class="line">	&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">		e.printStackTrace();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Use StreamingRender to draw MapContent on the canvas</p>
+</li>
+</ol>
+<h3 id="Initial-main-application-and-screen-size-for-display-map"><a href="#Initial-main-application-and-screen-size-for-display-map" class="headerlink" title="Initial main application and screen size for display map"></a>Initial main application and screen size for display map</h3><ul>
+<li><code>Main.java</code><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> <span class="keyword">extends</span> <span class="title">Application</span> </span>&#123;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">start</span><span class="params">(Stage primaryStage)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			MapCanvas canvas = <span class="keyword">new</span> MapCanvas(<span class="number">1024</span>, <span class="number">768</span>);</span><br><span class="line">			Pane pane = <span class="keyword">new</span>	Pane(canvas.getCanvas());</span><br><span class="line">			Scene scene = <span class="keyword">new</span> Scene(pane);</span><br><span class="line">			primaryStage.setScene(scene);</span><br><span class="line">			primaryStage.setTitle(<span class="string">"Map Example"</span>);</span><br><span class="line">			primaryStage.show();</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		launch(args);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="Source-Code"><a href="#Source-Code" class="headerlink" title="Source Code"></a>Source Code</h2><p><a href="https://github.com/aofxzuza/geotools_fx_tutorial" target="_blank" rel="noopener">Github</a></p>
+<h2 id="What’s-next"><a href="#What’s-next" class="headerlink" title="What’s next?"></a>What’s next?</h2><p>In <a href="/2016/02/24/javafx-with-geotools-tutorial-part-2-interacting-with-the-user-2/">Tutorial Part 2</a>, we will add more functionality like pan, zoom in and zoom out.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://aofxzuza.github.io/2016/02/12/javafx-with-geotools-tutorial-part-1-load-shape-file/" data-id="cjf0tnlmx0006fguj3uo5fa12" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/map-engine/">map engine</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/02/24/javafx-with-geotools-tutorial-part-2-interacting-with-the-user-2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          JavaFX with Geotools Tutorial – Part 2: Interacting with the User
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/coding/">coding</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/coding/application/">application</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/coding/web/">web</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/devops/">devops</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/testing/">testing</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/HEXO/">HEXO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MEAN-Stack/">MEAN Stack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NodeJS/">NodeJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/automate-testing/">automate testing</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/centos/">centos</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/map-engine/">map engine</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/01/03/H-N-Y-New-Blog/">Happy New Year With New Blog</a>
+          </li>
+        
+          <li>
+            <a href="/2017/02/17/getting-started-for-mean-stack-part-1/">Getting Started for MEAN Stack Part 1</a>
+          </li>
+        
+          <li>
+            <a href="/2017/02/17/autocbt/">Automated Cross-Browser Testing via Sauce Lab</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/03/setting-up-laravel-5-on-centos-7-with-minimal-desktop/">Setting up CentOS 7 with minimal desktop</a>
+          </li>
+        
+          <li>
+            <a href="/2016/02/24/javafx-with-geotools-tutorial-part-2-interacting-with-the-user-2/">JavaFX with Geotools Tutorial – Part 2: Interacting with the User</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Rattapong K.<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

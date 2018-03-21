@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-111812026-2', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+  <title>Automated Cross-Browser Testing via Sauce Lab | Aofxzuza</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="After I create the website, I have to test it with vary browsers and vary platforms it is a real pain in the ass. So now I found the solution to handle this task without install browsers or create new">
+<meta name="keywords" content="automate testing">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Automated Cross-Browser Testing via Sauce Lab">
+<meta property="og:url" content="https://aofxzuza.github.io/2017/02/17/autocbt/index.html">
+<meta property="og:site_name" content="Aofxzuza">
+<meta property="og:description" content="After I create the website, I have to test it with vary browsers and vary platforms it is a real pain in the ass. So now I found the solution to handle this task without install browsers or create new">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://aofxzuza.github.io/images/autocbt/saucelab-dashboard1.png">
+<meta property="og:image" content="https://aofxzuza.github.io/images/autocbt/my-account.png">
+<meta property="og:image" content="https://aofxzuza.github.io/images/autocbt/access-key.png">
+<meta property="og:image" content="https://aofxzuza.github.io/images/autocbt/password.png">
+<meta property="og:image" content="https://aofxzuza.github.io/images/autocbt/access-key2.png">
+<meta property="og:image" content="https://aofxzuza.github.io/images/autocbt/sb.png">
+<meta property="og:image" content="https://aofxzuza.github.io/images/autocbt/sb2.png">
+<meta property="og:image" content="https://aofxzuza.github.io/images/autocbt/sb32.png">
+<meta property="og:image" content="https://aofxzuza.github.io/images/autocbt/sb5.png">
+<meta property="og:image" content="https://aofxzuza.github.io/images/autocbt/sb6.png">
+<meta property="og:image" content="https://aofxzuza.github.io/images/autocbt/sb7.png">
+<meta property="og:image" content="https://aofxzuza.github.io/images/autocbt/sb8.png">
+<meta property="og:image" content="https://aofxzuza.github.io/images/autocbt/testrunning-cmd.png">
+<meta property="og:image" content="https://aofxzuza.github.io/images/autocbt/saucelab-dashboard-runtest1.png">
+<meta property="og:image" content="https://aofxzuza.github.io/images/autocbt/testrunning.png">
+<meta property="og:updated_time" content="2018-03-21T07:51:47.431Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Automated Cross-Browser Testing via Sauce Lab">
+<meta name="twitter:description" content="After I create the website, I have to test it with vary browsers and vary platforms it is a real pain in the ass. So now I found the solution to handle this task without install browsers or create new">
+<meta name="twitter:image" content="https://aofxzuza.github.io/images/autocbt/saucelab-dashboard1.png">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Aofxzuza</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://aofxzuza.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-autocbt" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/02/17/autocbt/" class="article-date">
+  <time datetime="2017-02-16T22:59:37.000Z" itemprop="datePublished">2017-02-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/testing/">testing</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Automated Cross-Browser Testing via Sauce Lab
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>After I create the website, I have to test it with vary browsers and vary platforms it is a <strong>real pain in the ass</strong>. So now I found the solution to handle this task without install browsers or create new vms.</p>
+<p>There are many clouds that provide the services for cross-browser testing such as <a href="https://crossbrowsertesting.com/" target="_blank" rel="noopener">CrossBrowserTesting</a>, <a href="https://saucelabs.com/" target="_blank" rel="noopener">SauceLabs</a> and so on. For this tutorial I will use <a href="https://saucelabs.com/" target="_blank" rel="noopener">SauceLabs</a> cause it give 90 hours and 8 concurrent sessions for free account.</p>
+<h2 id="Topic"><a href="#Topic" class="headerlink" title="Topic"></a>Topic</h2><ol>
+<li><a href="#Gethering">Gethering Access Key on SauceLabs</a></li>
+<li><a href="#Create">Create a test script</a></li>
+<li><a href="#prepare">Prepare the test framework</a></li>
+<li><a href="#watch">Watch the test executed on SuaceLabs</a></li>
+</ol>
+<h2 id="Gethering-Access-Key-on-SauceLabs"><a href="#Gethering-Access-Key-on-SauceLabs" class="headerlink" title="Gethering Access Key on SauceLabs"></a>Gethering Access Key on <a href="https://saucelabs.com/" target="_blank" rel="noopener">SauceLabs</a></h2><ol>
+<li><a href="https://saucelabs.com/signup/trial" target="_blank" rel="noopener">Create an account</a> or <a href="https://saucelabs.com/oauth/login/github" target="_blank" rel="noopener">login via GitHub account</a></li>
+<li>Go to <a href="https://saucelabs.com/beta/login" target="_blank" rel="noopener">login page</a> and login with your account<img src="/images/autocbt/saucelab-dashboard1.png" width="600"></li>
+<li>Click on your account at the buttom left -&gt; My Account <img src="/images/autocbt/my-account.png" width="250"></li>
+<li>Scroll down to Access Key Column<img src="/images/autocbt/access-key.png" width="600"></li>
+<li>Click show and then fill your password<img src="/images/autocbt/password.png" width="400"></li>
+<li>Now you got the access key for remote testing<img src="/images/autocbt/access-key2.png" width="400">
+</li>
+</ol>
+<h2 id="Create-a-test-script"><a href="#Create-a-test-script" class="headerlink" title="Create a test script"></a>Create a test script</h2><p>This step, I will use <a href="http://seleniumbuilder.github.io/se-builder/" target="_blank" rel="noopener">selenium builder</a> to create test steps. The <a href="http://seleniumbuilder.github.io/se-builder/" target="_blank" rel="noopener">selenium builder</a> is a powerful tool to create and export the test script to vary languages including java, javascript, c# etc and it also has plugin for github, CrossBrowserTesting and SauceLabs for remote testing and uploading the codes.</p>
+<ol>
+<li>Open Firefox and install <a href="http://seleniumbuilder.github.io/se-builder/" target="_blank" rel="noopener">selenium builder</a> (Firefox plugin)</li>
+<li>Restart Firefox</li>
+<li>Go to <code>Tools -&gt; Web developer -&gt; Launch Selenium Builder</code><img src="/images/autocbt/sb.png" width="400"></li>
+<li>Install <strong>Sauce for Selenium Builder</strong> plugin<img src="/images/autocbt/sb2.png" width="400"></li>
+<li>Click back, then start recording the test step and edit some steps such as pause<img src="/images/autocbt/sb32.png" width="400"></li>
+<li>Stop Recording</li>
+<li>Go to menu <code>Run -&gt; Run on Sauce OnDemand</code></li>
+<li>Fill Username, Access Key and select browsers that you would like to test<img src="/images/autocbt/sb5.png" width="400"></li>
+<li>Click OK to run tests<img src="/images/autocbt/sb6.png" width="400"></li>
+<li>Meanwhile you can see the testing on <a href="#watch">SauceLabs</a></li>
+<li>Wait untill all tests is done<img src="/images/autocbt/sb7.png" width="400"></li>
+<li>Now export test to javascript by going to menu <code>File --&gt; Export...</code><img src="/images/autocbt/sb8.png" width="400"></li>
+<li><a name="export-script"></a>Click export to <code>Node.JS - Selenium-WebDriver</code><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> webdriver = <span class="built_in">require</span>(<span class="string">'selenium-webdriver'</span>),</span><br><span class="line">    By = webdriver.By,</span><br><span class="line">    until = webdriver.until;</span><br><span class="line"><span class="keyword">var</span> _ = <span class="built_in">require</span>(<span class="string">'underscore'</span>);</span><br><span class="line"><span class="keyword">var</span> VARS = &#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> globalTimeout = <span class="number">60</span>*<span class="number">1000</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> driver = <span class="keyword">new</span> webdriver.Builder()</span><br><span class="line">    .forBrowser(<span class="string">'firefox'</span>)</span><br><span class="line">    .build();</span><br><span class="line"></span><br><span class="line">driver.controlFlow().on(<span class="string">'uncaughtException'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'There was an uncaught exception: '</span> + err);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">driver.get(<span class="string">"https://www.google.co.th/"</span>);</span><br><span class="line">driver.sleep(<span class="number">2000</span>);</span><br><span class="line">driver.findElement(By.id(<span class="string">"lst-ib"</span>)).clear();</span><br><span class="line">driver.findElement(By.id(<span class="string">"lst-ib"</span>)).sendKeys(<span class="string">"longdreamjourney"</span>);</span><br><span class="line">driver.findElement(By.id(<span class="string">"lst-ib"</span>)).sendKeys(<span class="string">"\uE007"</span>);</span><br><span class="line">driver.sleep(<span class="number">2000</span>);</span><br><span class="line">driver.findElement(By.linkText(<span class="string">"LongDreamJourney – java"</span>)).click();</span><br><span class="line">driver.sleep(<span class="number">2000</span>);</span><br><span class="line">driver.getTitle().then(<span class="function"><span class="keyword">function</span> (<span class="params">title</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!_.isEqual(title, <span class="string">"LongDreamJourney – java"</span>)) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'verifyTitle failed'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">driver.quit();</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="Prepare-the-test-framework"><a href="#Prepare-the-test-framework" class="headerlink" title="Prepare the test framework"></a>Prepare the test framework</h2><p>This example I will use <a href="https://github.com/saucelabs-sample-test-frameworks/JS-Grunt-Mocha-Parallel-WebdriverJS" target="_blank" rel="noopener"><code>JS-Grunt-Mocha-Parallel-WebdriverJS</code></a> framework for run testing above.</p>
+<ol>
+<li>Install <a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">Node.js</a></li>
+<li><p>Install Grunt Globally</p>
+<pre>npm install grunt-cli -g</pre>
+</li>
+<li><p>Clone <code>JS-Grunt-Mocha-Parallel-WebdriverJS</code> and install dependencies</p>
+<pre>
+git clone https://github.com/saucelabs-sample-test-frameworks/JS-Grunt-Mocha-Parallel-WebdriverJS.git automate-test
+cd automate-test
+npm i
+</pre></li>
+<li>Project stucture description<pre>
+automate-test
+└── node_modules
+└── test
+   └── searchField-spec.js
+   └── verifyTitle-spec.js
+└── util
+   └── helpers.js
+└── .gitigore
+└── Gruntfile.js
+└── Jenkinsfile
+└── package.json
+└── README.md
+</pre></li>
+<li><p>Create new test spec file <strong>by copy the test steps from <a href="#export-script">the exported JavaScript</a></strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> assert = <span class="built_in">require</span>(<span class="string">'assert'</span>),</span><br><span class="line">    webdriver = <span class="built_in">require</span>(<span class="string">'selenium-webdriver'</span>),</span><br><span class="line">    By = webdriver.By,</span><br><span class="line">    makeSuite = <span class="built_in">require</span>(<span class="string">'../util/helpers'</span>).makeSuite;</span><br><span class="line"></span><br><span class="line">makeSuite(<span class="string">'Check Menu Site'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">  it(<span class="string">'should not error'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">done</span>) </span>&#123;</span><br><span class="line">    driver.controlFlow().on(<span class="string">'uncaughtException'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'There was an uncaught exception: '</span> + err);</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    driver.get(<span class="string">"https://www.google.co.th/"</span>);</span><br><span class="line">    driver.sleep(<span class="number">2000</span>);</span><br><span class="line">    driver.findElement(By.id(<span class="string">"lst-ib"</span>)).clear();</span><br><span class="line">    driver.findElement(By.id(<span class="string">"lst-ib"</span>)).sendKeys(<span class="string">"longdreamjourney"</span>);</span><br><span class="line">    driver.findElement(By.id(<span class="string">"lst-ib"</span>)).sendKeys(<span class="string">"\uE007"</span>);</span><br><span class="line">    driver.sleep(<span class="number">2000</span>);</span><br><span class="line">    driver.findElement(By.linkText(<span class="string">"LongDreamJourney – java"</span>)).click();</span><br><span class="line">    driver.sleep(<span class="number">2000</span>);</span><br><span class="line">    driver.getTitle().then(<span class="function"><span class="keyword">function</span> (<span class="params">title</span>) </span>&#123;</span><br><span class="line">      assert.equal(title,<span class="string">'LongDreamJourney – java'</span>);</span><br><span class="line">      done();</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Update the test emvironment in <code>Gruntfile.js</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">'use strict'</span>;</span><br><span class="line"><span class="keyword">var</span> os = <span class="built_in">require</span>(<span class="string">'os'</span>);</span><br><span class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span> (<span class="params">grunt</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// configure tasks</span></span><br><span class="line">    grunt.initConfig(&#123;</span><br><span class="line">        mocha_parallel: &#123;</span><br><span class="line">            options: &#123;</span><br><span class="line">                args: <span class="function"><span class="keyword">function</span>(<span class="params">suiteName</span>) </span>&#123;</span><br><span class="line">                    <span class="keyword">return</span> [];</span><br><span class="line">                &#125;,</span><br><span class="line">                env: <span class="function"><span class="keyword">function</span>(<span class="params">suiteName</span>) </span>&#123;</span><br><span class="line">                    process.env.BROWSER = grunt.option(<span class="string">'browser'</span>);</span><br><span class="line">                    process.env.VERSION = grunt.option(<span class="string">'version'</span>);</span><br><span class="line">                    process.env.PLATFORM = grunt.option(<span class="string">'platform'</span>);</span><br><span class="line">                    <span class="keyword">return</span> process.env;</span><br><span class="line">                &#125;,</span><br><span class="line">                report: <span class="function"><span class="keyword">function</span>(<span class="params">suite, code, stdout, stderr</span>) </span>&#123;</span><br><span class="line">                    <span class="keyword">if</span> (stdout.length) &#123;</span><br><span class="line">                      process.stdout.write(stdout);</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">if</span> (stderr.length) &#123;</span><br><span class="line">                      process.stderr.write(stderr);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;,</span><br><span class="line">                done: <span class="function"><span class="keyword">function</span>(<span class="params">success, results</span>) </span>&#123;</span><br><span class="line">                &#125;,</span><br><span class="line">                mocha: path.join(<span class="string">'node_modules'</span>, <span class="string">'.bin'</span>, <span class="string">'mocha'</span>) + (<span class="regexp">/win32/</span>.test(os.platform()) ? <span class="string">'.cmd'</span> : <span class="string">''</span>),</span><br><span class="line">                <span class="comment">//this is the default concurrency, change as needed.</span></span><br><span class="line">                concurrency: os.cpus().length * <span class="number">1.5</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line"></span><br><span class="line">        parallel: &#123;</span><br><span class="line">            assets: &#123;</span><br><span class="line">                options: &#123;</span><br><span class="line">                    grunt: <span class="literal">true</span></span><br><span class="line">                &#125;,</span><br><span class="line">                tasks: [<span class="string">'run_windows10_chrome_56'</span>,<span class="string">'run_windows10_firefox_51'</span>]</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// load tasks</span></span><br><span class="line">    grunt.loadNpmTasks(<span class="string">'grunt-mocha-parallel'</span>);</span><br><span class="line">    grunt.loadNpmTasks(<span class="string">'grunt-parallel'</span>);</span><br><span class="line">    grunt.registerTask(<span class="string">'Windows10_chrome_56'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">      grunt.option(<span class="string">'browser'</span>, <span class="string">'chrome'</span>);</span><br><span class="line">      grunt.option(<span class="string">'version'</span>, <span class="number">56</span>);</span><br><span class="line">      grunt.option(<span class="string">'platform'</span>, <span class="string">"Windows 10"</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">    grunt.registerTask(<span class="string">'Windows10_firefox_51'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">      grunt.option(<span class="string">'browser'</span>, <span class="string">'firefox'</span>);</span><br><span class="line">      grunt.option(<span class="string">'version'</span>, <span class="number">51</span>);</span><br><span class="line">      grunt.option(<span class="string">'platform'</span>, <span class="string">"Windows 10"</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="comment">// register tasks</span></span><br><span class="line">    grunt.registerTask(<span class="string">'default'</span>, [<span class="string">'parallel'</span>]);</span><br><span class="line">    grunt.registerTask(<span class="string">'run_windows10_chrome_56'</span>, [<span class="string">'Windows10_chrome_56'</span>, <span class="string">'mocha_parallel'</span>]);</span><br><span class="line">    grunt.registerTask(<span class="string">'run_windows10_firefox_51'</span>, [<span class="string">'Windows10_firefox_51'</span>, <span class="string">'mocha_parallel'</span>]);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Setting up envitronment for Sauce Credentials</p>
+<ul>
+<li>Windows<pre>
+set SAUCE_USERNAME=...
+set SAUCE_ACCESS_KEY=...
+</pre></li>
+<li>Linux or OSX<pre>
+export SAUCE_USERNAME=...
+export SAUCE_ACCESS_KEY=...
+</pre></li>
+</ul>
+</li>
+<li>Running Tests <code>npm test</code></li>
+<li>Meanwhile you can watch the testing on <a href="#watch">SauceLabs</a></li>
+<li>Wait util all test is done and see every things are green….<img src="/images/autocbt/testrunning-cmd.png" width="600">
+</li>
+</ol>
+<h2 id="Watch-the-test-executed-on-SuaceLabs"><a href="#Watch-the-test-executed-on-SuaceLabs" class="headerlink" title="Watch the test executed on SuaceLabs"></a><a name="watch"></a>Watch the test executed on SuaceLabs</h2><p>While we are executing the test scripts, we can see the test is running on SauceLabs website and also we can watch the test is executing on the web browsers in real time.</p>
+<ol>
+<li>Go to SauceLabs Dashboard</li>
+<li>SauceLabs will display the test case is running…<img src="/images/autocbt/saucelab-dashboard-runtest1.png" width="600"></li>
+<li>Click on the test instant to watch your test executing in real-time<img src="/images/autocbt/testrunning.png" width="600">
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://aofxzuza.github.io/2017/02/17/autocbt/" data-id="cjf0tnlmp0002fgujith1m5gb" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/automate-testing/">automate testing</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/02/17/getting-started-for-mean-stack-part-1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Getting Started for MEAN Stack Part 1
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/04/03/setting-up-laravel-5-on-centos-7-with-minimal-desktop/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Setting up CentOS 7 with minimal desktop</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/coding/">coding</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/coding/application/">application</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/coding/web/">web</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/devops/">devops</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/testing/">testing</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/HEXO/">HEXO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MEAN-Stack/">MEAN Stack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NodeJS/">NodeJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/automate-testing/">automate testing</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/centos/">centos</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/map-engine/">map engine</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/01/03/H-N-Y-New-Blog/">Happy New Year With New Blog</a>
+          </li>
+        
+          <li>
+            <a href="/2017/02/17/getting-started-for-mean-stack-part-1/">Getting Started for MEAN Stack Part 1</a>
+          </li>
+        
+          <li>
+            <a href="/2017/02/17/autocbt/">Automated Cross-Browser Testing via Sauce Lab</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/03/setting-up-laravel-5-on-centos-7-with-minimal-desktop/">Setting up CentOS 7 with minimal desktop</a>
+          </li>
+        
+          <li>
+            <a href="/2016/02/24/javafx-with-geotools-tutorial-part-2-interacting-with-the-user-2/">JavaFX with Geotools Tutorial – Part 2: Interacting with the User</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Rattapong K.<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
