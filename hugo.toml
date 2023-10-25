@@ -1,4 +1,35 @@
-baseURL = 'https://example.org/'
+baseURL = 'https://aofxzuza.github.io/'
 languageCode = 'en-us'
-title = 'My New Hugo Site'
-theme = 'ananke'
+title = "RTPK's Blog"
+theme = 'paper'
+
+# disqusShortname = 'YOUR_DISQUS_SHORTNAME'   # use disqus comments
+
+[params]
+  # color style
+  color = 'linen'                           # linen, wheat, gray, light
+
+  # header social icons
+  # twitter = 'YOUR_TWITTER_ID'               # twitter.com/YOUR_TWITTER_ID
+  github = 'aofxzuza'                 # github.com/YOUR_GITHUB_ID
+  # instagram = 'YOUR_INSTAGRAM_ID'           # instagram.com/YOUR_INSTAGRAM_ID
+  linkedin = 'rattapong-khamphansa-1b5048a5'             # linkedin.com/in/YOUR_LINKEDIN_ID
+  # mastodon = 'YOUR_MASTODON_LINK'           # e.g. 'https://mastodon.instance/@xxx'
+  # rss = false                                # show rss icon
+
+  # home page profile
+  avatar = 'https://gravatar.com/avatar/3c1203b2f203090a0979b7c5ec7cbee25e0e446ee3bb5ebaae78cafee1602bd9'                 # gravatar email or image url
+  name = 'Rattapong Khamphansa'
+  bio = "I'm a full stack developer. I love to share my experiences."
+
+
+  # misc
+  disableHLJS = true                        # disable highlight.js
+  disablePostNavigation = true              # disable post navigation
+  monoDarkIcon = true                       # show monochrome dark mode icon
+  # gravatarCdn = 'https://gravatar.com/avatar/'         # e.g. 'https://cdn.v2ex.com/gravatar/'
+  # graphCommentId = "YOUR_GRAPH_COMMENT_ID"  # use graph comment (disqus alternative)
+  math = true                               # enable KaTeX math typesetting globally
+
+[taxonomies]
+tag = "tags"
