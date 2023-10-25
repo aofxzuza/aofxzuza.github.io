@@ -4,7 +4,9 @@
 <div align="center">
 <h1>RattapongK Personal Blog</h1>
 </div>
-Blog: [aofxzuza.github.io](https://aofxzuza.github.io/)
+
+## Links
+[aofxzuza.github.io](https://aofxzuza.github.io/)
 
 ## Prerequisites
 - [Golang](https://go.dev/dl/)
